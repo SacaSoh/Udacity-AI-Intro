@@ -1,5 +1,7 @@
 # Udacity-AI-Intro
-Udacity AI Intro Project
+Udacity AI Intro Project 1
+
+Use a Pre-trained Image Classifier to Identify Dog Breeds
 
 Principal Objectives
 Correctly identify which pet images are of dogs (even if breed is misclassified) and which pet images aren't of dogs.
