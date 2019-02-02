@@ -1,0 +1,99 @@
+Command Line Arguments:
+     dir = uploaded_images/ 
+    arch = alexnet 
+ dogfile = dognames.txt
+
+Pet Image Label Dictionary has 4 key-value pairs.
+Below are 4 of them:
+ 1 key:               alligator_01.jpg  label:                  alligator
+ 2 key:                     Dog_01.jpg  label:                        dog
+ 3 key:                     Dog_02.jpg  label:                        dog
+ 4 key:              Headphones_01.jpg  label:                 headphones
+
+     MATCH:
+
+              alligator_01.jpg: 
+Real:                  alligator   Classifier: american alligator, alligator mississipiensis
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier:                     toy poodle
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:                     toy poodle
+
+             Headphones_01.jpg: 
+Real:                 headphones   Classifier: gasmask, respirator, gas helmet
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+Duplicate name
+
+     MATCH:
+
+              alligator_01.jpg: 
+Real:                  alligator   Classifier: american alligator, alligator mississipiensis  
+PetLabelDog: 0  ClassLabelDog: 0
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier:                     toy poodle  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier:                     toy poodle  
+PetLabelDog: 1  ClassLabelDog: 1
+
+             Headphones_01.jpg: 
+Real:                 headphones   Classifier: gasmask, respirator, gas helmet  
+PetLabelDog: 0  ClassLabelDog: 0
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+
+ ** Statistics from calculates_results_stats() function:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+
+ ** Check Statistics - calculated from this function as a check:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:   0.0
+CNN model architecture: alexnet
+Number of Images: 4
+Number of "Not-a" Dog Images: 2
+% Correct Dogs: 100.0%
+% Correct Breed: 0.0%
+% Correct "Not-a" Dog: 100.0%
+% Match (both dogs and "not-a" dog): 25.0%
+
+
+Missclassified breeds:
+Pet Image Label: dog, Classifier Label: toy poodle
+Pet Image Label: dog, Classifier Label: toy poodle
+
+
+** Total Elapsed Runtime: 0:0:0

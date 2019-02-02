@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
+# PROGRAMMER: Diego da Costa Oliveira
+# DATE CREATED: Feb 02, 2019.
 # REVISED DATE: 
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
@@ -62,5 +62,26 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
-                
+    base_message = f'CNN model architecture: {model}' + '\n' \
+                   f'Number of Images: {results_stats_dic["n_images"]}' + '\n' \
+                   f'Number of "Not-a" Dog Images: {results_stats_dic["n_dogs_img"]}' + '\n' \
+                   f'% Correct Dogs: {results_stats_dic["pct_correct_dogs"]}' + '%\n' \
+                   f'% Correct Breed: {results_stats_dic["pct_correct_breed"]}' + '%\n' \
+                   f'% Correct "Not-a" Dog: {results_stats_dic["pct_correct_notdogs"]}' + '%\n' \
+                   f'% Match (both dogs and "not-a" dog): {results_stats_dic["pct_match"]}' + '%\n'
+    print(base_message)
+
+    if print_incorrect_dogs and (results_stats_dic["n_correct_dogs"] + results_stats_dic["n_correct_notdogs"]
+                                 != results_stats_dic["n_images"]):
+        missclassified_dogs = '\nMissclassified dogs:\n'
+        for key, value in results_dic.items():
+            if sum(value[3:]) == 1:
+                missclassified_dogs += f'Pet Image Label: {value[0]}, Classifier Label: {value[1]}' + '\n'
+        print(missclassified_dogs)
+
+    if print_incorrect_breed and (results_stats_dic["n_correct_dogs"] != results_stats_dic["n_correct_breed"]):
+        missclassified_breeds = '\nMissclassified breeds:\n'
+        for key, value in results_dic.items():
+            if sum(value[3:]) == 2 and value[2] == 0:
+                missclassified_breeds += f'Pet Image Label: {value[0]}, Classifier Label: {value[1]}' + '\n'
+        print(missclassified_breeds)
