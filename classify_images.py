@@ -68,10 +68,8 @@ def classify_images(images_dir, results_dic, model):
     for file in results_dic:
         path = images_dir + file
         classification = (classifier(path, model)).lower()
-        print(classification)
         if results_dic[file][0] in classification:
             match = 1
         else:
             match = 0
-        print(str(results_dic[file][0]) + ' ' + str(match))
         results_dic[file].extend([classification, match])
