@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/calculates_results_stats.py
 #                                                                             
-# PROGRAMMER:
-# DATE CREATED:                                  
+# PROGRAMMER: Diego da Costa Oliveira
+# DATE CREATED: Feb 02, 2019.
 # REVISED DATE: 
 # PURPOSE: Create a function calculates_results_stats that calculates the 
 #          statistics of the results of the programrun using the classifier's model 
@@ -67,7 +67,39 @@ def calculates_results_stats(results_dic):
                      and the value is the statistic's value. See comments above
                      and the previous topic Calculating Results in the class for details
                      on how to calculate the counts and statistics.
-    """        
-    # Replace None with the results_stats_dic dictionary that you created with 
-    # this function 
-    return None
+    """
+
+    n_images = len(results_dic)
+    n_dogs_img = 0
+    n_notdogs_img = 0
+    n_match = 0
+    n_correct_dogs = 0
+    n_correct_notdogs = 0
+    n_correct_breed = 0
+
+    for key, value in results_dic.items():
+        if value[3] == 1:
+            n_dogs_img += 1
+        if value[3] == 0:
+            n_notdogs_img += 1
+        if value[2] == 1:
+            n_match += 1
+        if value[3] == 1 and value[4] == 1:
+            n_correct_dogs += 1
+        if value[3] == 0 and value[4] == 0:
+            n_correct_notdogs += 1
+        if value[3] == 1 and value[2] == 1:
+            n_correct_breed += 1
+
+    pct_match = (n_match / n_images) * 100
+    pct_correct_dogs = (n_correct_dogs / n_dogs_img) * 100
+    pct_correct_breed = (n_correct_breed / n_dogs_img) * 100
+    pct_correct_notdogs = (n_correct_notdogs / n_notdogs_img) * 100
+
+    results_stats_dic = {'n_images': n_images, 'n_dogs_img': n_dogs_img, 'n_notdogs_img': n_notdogs_img,
+                         'n_match': n_match, 'n_correct_dogs': n_correct_dogs, 'n_correct_notdogs': n_correct_notdogs,
+                         'n_correct_breed': n_correct_breed, 'pct_match': pct_match,
+                         'pct_correct_dogs': pct_correct_dogs, 'pct_correct_breed': pct_correct_breed,
+                         'pct_correct_notdogs': pct_correct_notdogs}
+
+    return results_stats_dic
